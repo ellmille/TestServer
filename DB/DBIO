@@ -1,0 +1,61 @@
+var mysql      = require('mysql');
+var q 		   = require('q');
+
+//holds our connection variable, not accessed from outside this page
+var ConnectionClass = function(){
+    this.connection = false;
+};
+
+var InitDB = function(dbName, dbUser, dbPass){
+    //sets our connection (only called once)
+    ConnectionClass.connection = mysql.createConnection({
+        host     : 'localhost',
+        user     : dbUser,
+        password : dbPass,
+        database : dbName
+    });
+    ConnectionClass.connection.connect();
+};
+
+//GET
+var CreateSelectQuery = function(queryString){
+    //set promise
+    var deferred = q.defer();
+    //send query to DB
+    ConnectionClass.connection.query(queryString, function(err, rows) {
+        if (err) throw err;
+        if(!err){
+            //resolve promise if there are no problems
+            deferred.resolve(rows);
+        }
+    });
+    //return resolved promise
+    return deferred.promise;
+};
+
+//POST
+var CreateInsertQuery = function(queryString){
+    var deferred = q.defer();
+    ConnectionClass.connection.query(queryString, function(err, answer){
+        if (err) throw err;
+        if(!err){
+            if(answer.affectedRows > 0){
+                deferred.resolve(true);
+            }else{
+                deferred.resolve(false);
+            }
+        }
+    });
+    return deferred.promise;
+};
+
+
+//disconnect from DB
+var DisconnectDatabase = function(){
+    ConnectionClass.connection.end();
+};
+
+exports.InitDB 			   = InitDB;
+exports.CreateSelectQuery  = CreateSelectQuery;
+exports.CreateInsertQuery  = CreateInsertQuery;
+exports.DisconnectDatabase = DisconnectDatabase;

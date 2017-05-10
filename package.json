@@ -1,0 +1,46 @@
+{
+  "name": "TestADMS",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "JSON": "^1.0.0",
+    "body-parser": "^1.17.1",
+    "browserify": "^14.3.0",
+    "chai": "*",
+    "chai-as-promised": "latest",
+    "express": "^4.15.2",
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "jasmine-core": "^2.5.2",
+    "jshint-stylish": "^2.2.1",
+    "karma": "^1.3.0",
+    "karma-browserify": "^5.1.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-cli": "^1.0.1",
+    "karma-coverage": "^1.1.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "mocha": "^3.2.0",
+    "mysql": "^2.11.1",
+    "node-router": "^0.1.5",
+    "node-serialize": "0.0.4",
+    "nodeunit-async": "latest",
+    "phantomjs-prebuilt": "^2.1.14",
+    "q": "^1.4.1",
+    "restify": "^4.3.0",
+    "watchify": "^3.9.0"
+  },
+  "description": "Boilerplate for future projects",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "author": "emiller",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "latest",
+    "nodeunit": "latest",
+    "Buffer": "latest"
+  }
+}
